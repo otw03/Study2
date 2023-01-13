@@ -5,4 +5,4 @@
 [Nodejs](Nodejs/INDEX.md)  
 [Database](DB/INDEX.md)  
 [Linux](Nodejs/INDEX.md)  
-[Etc](Etc/INDEX.md)  
+[Etc](etc/INDEX.md)  
