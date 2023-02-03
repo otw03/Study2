@@ -45,7 +45,7 @@ e.target.value 를 통해서 이벤트의 value 값을 알 수 있다. (해당 �
 
 ### App.js
 
-```
+```jsx
 import React from 'react';
 import EventPractice from './EventPractice ';
 
@@ -60,7 +60,7 @@ export default App;
 
 ### EventPractice.js
 
-```
+```jsx
 import React, { useState } from 'react';
 
 function EventPractice() {
