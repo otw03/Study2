@@ -1,5 +1,7 @@
-const URL = 'https://드림코딩.com';
-const encoded = encodeURI(URL);
-const encoded2 = encodeURIComponent(URL);
-console.log(encoded);
-console.log(encoded2);
+// Nullish Coalescing Operator
+// ES11 (ECMAScript 2020)
+// ?? null, undefined
+// || falshy한 경우 설정(할당) 0, -0, ''
+let num = 0;
+console.log(num || '-1');
+console.log(num ?? '-1');
