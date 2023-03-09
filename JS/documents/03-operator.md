@@ -6,6 +6,11 @@
 [5. 비교 연산자](#5-비교-연산자)  
 [6. 논리 연산자](#6-논리-연산자)  
 [7. 삼항 연산자](#7-삼항-연산자)  
+[8. 단축평가](#8-단축평가)  
+[-- 8.1 단축평가란?](#81-단축평가란)  
+[-- 8.2 && 연산자 활용](#82--연산자-활용)  
+[-- 8.3 || 연산자 활용](#83--연산자-활용)  
+[9. 널 체크 하는 방법(Nullish Coalescing Operator)](#9-널-체크-하는-방법nullish-coalescing-operator)  
 [연산자 연습문제](#연산자-연습문제)  
 
 변수를 활용하여 각종 연산을 수행하는데 사용되는 특수 기호
@@ -439,6 +444,105 @@ console.log("태어난 년도는 %d", result);
 
 ---
 
+# 8. 단축평가
+
+## 8.1 단축평가란?
+
+- **표현식을 평가하는 도중에 평가 결과가 확정된 경우 나머지 평가 과정을 생략하는 것**
+- 논리연산자의 경우 조건문 안에서는 모든 표현식들이 평가가 되어서
+- 평가된 값이 true, false 로 나타나지만
+- 조건문 밖에서 사용하는 경우
+- `&&` 연산의 경우 ⇒ 처음 오는 조건이 반환
+- `||` 연산의 경우 ⇒ 처음 오는 true 조건이 반환
+
+```jsx
+// 논리연산자 Logical Operator
+// && 그리고
+// || 또는
+// 단축평가: short-circuit evaluation
+const obj1 = { name: '🐶' };
+const obj2 = { name: '🐱', owner: 'Ellie' };
+
+if (obj1 || obj2) {
+  console.log('둘다 true!');  // 둘다 true!
+}
+
+let result = obj1 && obj2;
+console.log(result);   // { name: '🐱', owner: 'Ellie' }
+
+result = obj1 || obj2;
+console.log(result);   // { name: '🐶' }
+
+// 활용예
+// 조건이 truthy일때 && 무언가를 해야 할 경우
+// 조건이 falshy일때 || 무언가를 해야 할 경우
+function changeOwner(animal) {
+  if (!animal.owner) {
+    throw new Error('주인이 없어');
+  }
+  animal.owner = '바뀐주인!';
+}
+function makeNewOwner(animal) {
+  if (animal.owner) {
+    throw new Error('주인이 있어');
+  }
+  animal.owner = '새로운주인!';
+}
+
+obj1.owner && changeOwner(obj1);
+obj2.owner && changeOwner(obj2);
+console.log(obj1); // { name: '🐶' }
+console.log(obj2); // { name: '🐱', owner: '바뀐주인!' }
+
+obj1.owner || makeNewOwner(obj1);
+obj2.owner || makeNewOwner(obj2);
+console.log(obj1); // { name: '🐶', owner: '새로운주인!' }
+console.log(obj2); // { name: '🐱', owner: '바뀐주인!' }
+```
+
+## 8.2 `&&` 연산자 활용
+
+null 또는 undefined인 경우를 확인할때  
+
+```jsx
+// null 또는 undefined인 경우를 확인할때
+let item = { price: 1 };
+const price = item && item.price;
+console.log(price); // 1
+```
+
+## 8.3 `||` 연산자 활용
+
+```jsx
+// 기본값을 설정
+// default parameter: 전달하지 않거나, undefined 인 경우 설정
+// || 값이 falshy한 경우 설정(할당): 0, -0, null, undefined, ''
+function print(message) {
+  const text = message || 'Hello';
+  console.log(text);
+}
+print();          // Hello
+print(undefined); // Hello
+print(null);      // Hello
+print(0);         // Hello
+```
+
+# 9. 널 체크 하는 방법(Nullish Coalescing Operator)
+
+- 일반 코드에서 `||` 연산자를 쓰면 null 과 undefined 를 제외하고
+- falshy한 경우도 설정(할당) 된다 ⇒ `0, -0, ''`
+- null, undefined 인 경우만 설정하고 싶을 때 사용
+
+```jsx
+// Nullish Coalescing Operator
+// ES11 (ECMAScript 2020)
+// ?? null, undefined
+// || falshy한 경우 설정(할당) 0, -0, ''
+let num = 0;
+console.log(num || '-1');   // -1
+// num이라는 값이 없을 때만 설정
+console.log(num ?? '-1');   // 0
+```
  
 
 # 연산자 연습문제

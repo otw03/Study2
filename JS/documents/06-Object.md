@@ -1013,7 +1013,8 @@ undefined
 
 ## ES6의 새로운 방법
 
-- "객체이름?"는 해당 객체가 undefined나 null이면 평가를 중지하고 undefined를 반환한다.
+- "객체이름?"는 해당 객체가 undefined나 null이면 평가를 중지하고 undefined를 반환한다.  
+⇒ `null 또는 undefined을 확인할때 사용`
 - 옵셔널 체이닝은 존재하지 않아도 괜찮은 대상에게만 사용하고
 - 반드시 존재해야하는 개체에게는 if문으로 존재 여부를 검사하는 유효성 검사를 수행하는 것이 좋다.
 
@@ -1028,6 +1029,26 @@ console.log("프로그램 종료~!!");
 ```
 undefined
 프로그램 종료~!!
+```
+
+예제2) 
+
+```jsx
+// 옵셔널 체이닝 연산자 Optional Chaining Operator
+// ES11 (ECMAScript 2020)
+// ?.
+// null 또는 undefined을 확인할때
+let item = { price: 1 };
+const price = item?.price;
+console.log(price);       // 1
+
+let obj = { name: '🐶', owner: { name: '태원' } };
+function printName(obj) {
+  const ownerName = obj?.owner?.name;
+  console.log(ownerName);
+}
+printName(obj);    // 태원
+printName();       // undefined
 ```
 
 # 7. 생성자 함수
