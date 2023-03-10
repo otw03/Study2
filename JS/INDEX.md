@@ -10,4 +10,7 @@
 [10-이터레이션, 제너레이터](./documents/10-Iterator_generator.md)  
 [11-Set, Map](./documents/11-Set_Map.md)  
 [12-비동기](./documents/12-asynchronous%20processing.md)  
+[13. 스코프](./documents/13.Scope.md)  
+[14. 클로저](./documents/14.Closure.md)  
+[15. 프로토타입](./documents/15.Prototype.md)  
 []()  
