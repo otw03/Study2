@@ -209,7 +209,7 @@ export default IterationSample;
 
 filter 함수는 인자에 분류하고 싶은 조건을 반환하는 함수를 넣어주면 된다  
 
-```
+```jsx
 import React, { useState, useRef } from "react";
 
 const IterationSample = () => {
@@ -238,6 +238,8 @@ const IterationSample = () => {
 
   // 항목을 더블 클릭했을 때 지워지는 함수
   const onRemove = id => {
+    // name.id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듦
+    // = name.id 가 id 인 것을 제거함
     const nextNames = names.filter(name => name.id !== id);
     setNames(nextNames);
   };
