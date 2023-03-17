@@ -1,5 +1,8 @@
 # 5. ref
-# 1. ref
+[5.1 ref](#51-ref)  
+[5.2 ref 사용법](#52-ref-사용법)  
+
+# 5.1 ref
 
 JavaScript에서 특정 DOM을 선택할 때는  
 `getElementById`, `querySelector` 같은 DOM Selector 함수를 사용해서 DOM 을 선택함  
@@ -19,7 +22,7 @@ JavaScript에서 특정 DOM을 선택할 때는
 
 > 클래스형 컴포넌트에서는 콜백 함수를 사용하거나 `React.createRef`라는 함수를 사용
 
-# 2. ref 사용법
+# 5.2 ref 사용법
 
 useRef 는 .current
 
