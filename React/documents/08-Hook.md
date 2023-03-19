@@ -9,10 +9,10 @@
 [-- 8.3.2 카운터 구현하기 예시](#832-카운터-구현하기-예시)  
 [-- 8.3.3 리듀서로 인풋 상태 관리하기](#833-리듀서로-인풋-상태-관리하기)  
 [8.4 성능 최적화(memo, useMemo, useCallback)](#84-성능-최적화memo-usememo-usecallback)  
-[8.4.1 React.memo(), memo()](#841-reactmemo-memo)  
-[8.4.2 useMemo()](#842-usememo)  
-[8.4.3 useCallback()](#843-usecallback)  
-[8.4.4 memo, useMemo, useCallback 비교표](#844-memo-usememo-usecallback-비교표)  
+[-- 8.4.1 React.memo(), memo()](#841-reactmemo-memo)  
+[-- 8.4.2 useMemo()](#842-usememo)  
+[-- 8.4.3 useCallback()](#843-usecallback)  
+[-- 8.4.4 memo, useMemo, useCallback 비교표](#844-memo-usememo-usecallback-비교표)  
 
 class 없이 상태값(state) 관리와 React 기능을 사용할 수 있게 해주는 기능  
 
