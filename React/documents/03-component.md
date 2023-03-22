@@ -7,7 +7,7 @@
 [--3.2.1 간단한 props 사용법](#321-간단한-props-사용법)  
 [--3.2.2 태그 사이의 내용을 보여주는 props .children](#322-태그-사이의-내용을-보여주는-props-children)  
 [3.3 useState](#33-usestate)  
-[--3.3.1useState 사용법](#331-usestate-사용법)  
+[--3.3.1 useState 사용법](#331-usestate-사용법)  
 [--3.3.2 setState 비동기](#332-setstate-비동기)  
 
 **컴포넌트**  
