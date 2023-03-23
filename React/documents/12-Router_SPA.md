@@ -4,6 +4,12 @@
 [13.2 SPA(Single Page Application)](#132-spasingle-page-application)  
 [-- 13.2.1 SPA란?](#1321-spa란)  
 [-- 13.2.2 SPA의 장단점](#1322-spa의-장단점)  
+[13.3 URL 파라미터와 쿼리스트링](#133-url-파라미터와-쿼리스트링)  
+[-- 13.3.1 URL파라미터와 쿼리스트링](#1331-url파라미터와-쿼리스트링)  
+[-- 13.3.2 React에서 URL파라미터와 쿼리스트링 사용법](#1332-react에서-url파라미터와-쿼리스트링-사용법)  
+[-- -- useParams](#useparams)  
+[-- -- useLocation](#uselocation)  
+[-- -- useSearchParams](#usesearchparams)  
 
 # 13.1 라우팅
 
@@ -40,8 +46,107 @@
 ⇒ 이를 통하여, 페이지의 로딩 속도를 개선
 > 
 - 하나의 HTML이므로 SEO(검색엔진 최적화)에 취약하다 (서버사이드 렌더링으로 해결 가능)
-- 서버사이드 랜더링 = React + Node / React + PHP / React + Java(Spring)
 
 > 서버 사이드 렌더링: 서버에서 페이지를 그려 클라이언트(브라우저)로 보낸 후 화면에 표시하는 기법
-> 
+>
 
+# 13.3 URL 파라미터와 쿼리스트링
+
+## 13.3.1 URL파라미터와 쿼리스트링
+
+- URL 파라미터는 주소의 경로에 유동적인 값을 넣는 형태이며,
+- 쿼리스트링은 주소의 뒷부분에 **`?`** 문자 이후 **`key=value`**를 정의하며 **`&`**로 구분하는 형태
+
+```jsx
+https://www.example.com/users/1234
+```
+
+위 URL은 "**https://www.example.com"이라는** 도메인의 "/users/1234"라는 경로를 나타냄  
+여기서 "1234"는 URL 파라미터로, 이 URL이 가리키는 페이지에서 사용되는 변수의 값이다  
+즉, 이 URL이 가리키는 페이지에서는 "1234"라는 값을 가진 사용자 정보를 보여줌  
+
+```jsx
+https://www.example.com/search?q=apple&lang=en
+```
+
+위 URL은 "**https://www.example.com"이라는** 도메인의 "/search"라는 경로를 나타내며,  "q=apple"과 "lang=en"이라는 두 개의 쿼리스트링이 포함됨    
+이 URL이 가리키는 페이지에서는 “q”는 "apple", “lang”은 "en"(영어)로 설정되어 검색어를 검색함    
+
+- 일반적으로는 파라미터는 특정 id 나 이름을 가지고 조회를 할 때 사용하고,
+- 쿼리의 경우엔 어떤 키워드를 검색하거나, 요청을 할 때 필요한 옵션을 전달 할 때 사용함
+
+## 13.3.2 React에서 URL파라미터와 쿼리스트링 사용법
+
+### useParams
+
+url파라미터를 통해서 여러개의 페이지를 생성하고 싶을때, `useParams()`를 사용  
+
+```jsx
+<Route path="/users/:id" element={<Detail names={names}/>}/>
+```
+
+위 코드의 경우 `:id`라는것이 `url 파라미터`이다.  
+
+- 예시
+
+```jsx
+import { useParams } from 'react-router-dom';
+
+function User() {
+  const { id } = useParams();
+  // id 변수를 사용하여 렌더링할 내용을 작성합니다.
+  return (
+    <div>
+      <h1>User {id}</h1>
+    </div>
+  );
+}
+```
+
+### ****useLocation****
+
+React Router에서 쿼리스트링은 `location` 객체를 이용하여 가져옴  
+
+`useLocation()`은 앞서 나왔던 `useParams()`와 동일하게 현재 페이지의 쿼리스트링이 반환됨  
+
+작성할때는 `useParams()`와 동일하게 작성하면 사용가능  
+
+```jsx
+const location = useLocation();
+```
+
+반환값이 location이기때문에 다양한 값을 사용 가능  
+
+- .pathname : 현재 주소의 경로(쿼리스트링 제외 ?앞의값)
+- search : 맨앞에 ? 문자를 포함한 쿼리스트링 값
+- state : 페이지로 이동할때 임의로 넣을수 있는 상태값
+- key : location의 고유값, 초기에는 default이며 페이지가 변경될 때 마다 고유의값이 생성됨
+
+### useSearchParams
+
+`[location.search](http://location.search)` 를 받아올 경우  
+`?`와 `&`를 분리한후 `key`와 `value`를 파싱해줘야하는 번거로움이 존재  
+
+이것을 해결하기 위해 `useSearchParams` 사용  
+
+`URLSearchParams`를 이용하여 쿼리스트링 값을 가져옴  
+이후, `get` 메서드를 이용하여 각각의 쿼리스트링 값을 가져올 수 있음  
+
+```jsx
+import { useLocation } from 'react-router-dom';
+
+function SearchResults() {
+	// 위와 아래 두 방법 다 가능
+  //const {search} = location;
+  //const searchParams = new URLSearchParams(search);
+  const searchParams = new URLSearchParams(useLocation().search);
+  const q = searchParams.get('q');
+  const lang = searchParams.get('lang');
+  // q와 lang 변수를 사용하여 검색 결과를 렌더링합니다.
+  return (
+    <div>
+      <h1>Search results for "{q}" in {lang}</h1>
+    </div>
+  );
+}
+```
