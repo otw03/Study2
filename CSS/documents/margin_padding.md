@@ -1,4 +1,7 @@
-# 사이즈 조절 margin, padding
+# 사이즈 조절 margin, padding  
+[1. margin](#1-margin-속성)  
+[2. padding](#2-padding-속성)  
+
 
 # 1. margin 속성
 
