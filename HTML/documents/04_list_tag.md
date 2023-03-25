@@ -1,9 +1,9 @@
 # list_tag  
 [1. 목록을 만드는 태그](#1-목록을-만드는-태그)  
-[1.1 ul Unordered List : 순서가 없는 목록 태그](#11-ulul--unordered-list--순서가-없는-목록-태그)  
-[1.2 ol Ordered List : 순서가 있는 목록 태그](#12-olol--ordered-list--순서가-있는-목록-태그)  
-[1.3 dl Description List : 설명 목록 태그](#13--dldl--description-list--설명-목록-태그)  
-[1.4 중첩목록](#14-중첩목록)  
+[-- 1.1 ul Unordered List : 순서가 없는 목록 태그](#11-ulul--unordered-list--순서가-없는-목록-태그)  
+[-- 1.2 ol Ordered List : 순서가 있는 목록 태그](#12-olol--ordered-list--순서가-있는-목록-태그)  
+[-- 1.3 dl Description List : 설명 목록 태그](#13--dldl--description-list--설명-목록-태그)  
+[-- 1.4 중첩목록](#14-중첩목록)  
 
 # 1. 목록을 만드는 태그
 

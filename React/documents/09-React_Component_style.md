@@ -1,12 +1,12 @@
 # 09-React Component style
-[9.1 CSS](#51-css)  
-[-- 9.1.1 CssClass](#511-cssclass)  
-[-- 9.1.2 CssModule](#512-cssmodule)  
-[-- 9.1.3 InlineCss](#513-inlinecss)  
-[9.2 SCSS](#52-scss)  
-[-- 9.2.1 Scss](#521-scss)  
-[-- 9.2.2 ScssModule](#522-scssmodule)  
-[9.3 StyledComponent](#53-styledcomponent)  
+[9.1 CSS](#91-css)  
+[-- 9.1.1 CssClass](#911-cssclass)  
+[-- 9.1.2 CssModule](#912-cssmodule)  
+[-- 9.1.3 InlineCss](#913-inlinecss)  
+[9.2 SCSS](#92-scss)  
+[-- 9.2.1 Scss](#921-scss)  
+[-- 9.2.2 ScssModule](#922-scssmodule)  
+[9.3 StyledComponent](#93-styledcomponent)  
 
 글꼴의 크기, 모양, 색상, 문단 설정들을 미리 정의해두었다가 참조하여 사용하는 기능  
 
