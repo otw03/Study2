@@ -14,3 +14,4 @@
 [Context API](./documents/ContextAPI.md)  
 [Axios](./documents/Axios.md)  
 [리덕스(Redux)](./documents/Redux.md)  
+[서버 사이드 렌더링(Server-Side Rendering, SSR)](./documents/SSR.md)  
