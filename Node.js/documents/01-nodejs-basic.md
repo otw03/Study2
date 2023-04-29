@@ -3,8 +3,9 @@
 [1.2 Node.js 특성](#12-nodejs-특성)  
 [-- 1.2.1 이벤트 기반](#121-이벤트-기반)  
 [-- 1.2.2 논블로킹(Non-blocking) I/O](#122-논블로킹non-blocking-io)  
-[1.3 Express](#13-express)  
-[-- 1.3.1 Express 란?](#131-express-란)  
+[2. 호출스택, 이벤트 루프](#2-호출스택-이벤트-루프)  
+[-- 2.1 호출스택(함수의 호출, 자료구조의 스택)](#21-호출스택함수의-호출-자료구조의-스택)  
+[-- 2.2 이벤트 루프](#22-이벤트-루프)  
 
 # 1.1 Node.js 란?
 
@@ -52,59 +53,48 @@ js 실행창, 실행환경
 서버 스케일링 혹은 멀티 쓰레딩을 통해 해결  
 ⇒ 요청을 처리하는 서버를 늘린다
 
-# 1.3 Express
+# 2. 호출스택, 이벤트 루프
 
-## 1.3.1 Express 란?
+# 2.1 호출스택(함수의 호출, 자료구조의 스택)
 
-node.js 서버 구현 프레임워크  
+![호출스택 예시](../images/stack.png)
+> 출처: Node.js 교과서
 
-### express 설치
+- Anonymous은 가상의 전역 컨텍스트(항상 있다고 생각하는 게 좋음)
+- 함수 호출 순서대로 쌓이고, 역순으로 실행됨
+- 함수 실행이 완료되면 스택에서 빠짐
+- LIFO(Last In First Out) 구조라서 스택이라고 불림
 
-```bash
-npm install express
-```
+# 2.2 이벤트 루프
 
-또는
+![이벤트 루프 콜스택 예시01](../images/eventLoop.png)
+> 출처: Node.js 교과서
 
-```bash
-yarn add express
-```
+이벤트 루프 구조
 
-### express 모듈 참조 + 객체 생성 + 포트번호
+- 이벤트 루프: 이벤트 발생(setTimeout 등) 시 호출할 콜백 함수들(위의 예제에서는 run)을 관리하고, 호출할 순서를 결정하는 역할
+- 태스크 큐: 이벤트 발생 후 호출되어야 할 콜백 함수들이 순서대로 기다리는 공간
+- 백그라운드: 타이머나 I/O 작업 콜백, 이벤트 리스너들이 대기하는 공간. 여러 작업이 동시에 실행될 수 있음
 
-여기서 생성한 app 객체의 use() 함수를 사용해서
-각종 외부 기능, 설정 내용, URL을 계속해서 확장하는 형태로 구현이 진행된다.
+![이벤트 루프 콜스택 예시02](../images/eventLoop2.png)
+> 출처: Node.js 교과서
 
-```jsx
-const express = require('express'); // Express 모듈 불러오기
-const app = express();
-const port = 포트번호;
-```
+setTimeout이 호출될 때 콜백 함수 run은 백그라운드로
 
-### get요청시 응답내용 작성
+- 백그라운드에서 3초를 보냄
+- 3초가 다 지난 후 백그라운드에서 태스크 큐로 보내짐
 
-```jsx
-// http://localhost:port/경로
-app.get("/", (req, res) => {
-	// 브라우저에 보낼 응답 내용
-	let html = '<h1>Express로 구현한 Node.js 백엔드 페이지</h1>';
+setTimeout과 anonymous가 실행 완료된 후 호출 스택이 완전히 비워지면,  
+이벤트 루프가 태스크 큐의 콜백을 호출 스택으로 올림
 
-	// 응답 보내기
-	res.status(200).send(html);
-});
-```
+- 호출 스택이 비워져야만 올림
+- 호출 스택에 함수가 많이 차 있으면 그것들을 처리하느라 3초가 지난 후에도 run 함수가 태스크 큐에서 대기하게 됨 → 타이머가 정확하지 않을 수 있는 이유
 
-### 서버 실행
+![이벤트 루프 콜스택 예시03](../images/eventLoop3.png)
+> 출처: Node.js 교과서
 
-```jsx
-app.listen(port, () => {
-	console.log("start express server");
-	console.log(`server address => http://localhost:${port}`);
-}
-```
+run이 호출 스택에서 실행되고, 완료 후 호출 스택에서 나감
 
-터미널에 다음 명령어로 서버 실행
+- 이벤트 루프는 태스크 큐에 다음 함수가 들어올 때까지 계속 대기
+- 태스크 큐는 실제로 여러 개고, 태스크 큐들과 함수들 간의 순서를 이벤트 루프가 결정함
 
-```bash
-node 파일경로
-```
