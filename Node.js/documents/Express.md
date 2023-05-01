@@ -10,7 +10,7 @@
 [-- 6.4.2 res](#642-res)  
 
 
-# 6.1 **Express**
+# 6.1 Express
 
 ## 6.1.1 Express 란?
 
