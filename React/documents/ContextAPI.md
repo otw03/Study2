@@ -1,10 +1,13 @@
-# Context API
+# -Context API
 [.1 Context API란?](#1-context-api란)  
 [-- .1.1 Provider, Consumer 사용법](#11-provider-consumer-사용법)  
 [-- .1.2 useContext](#12-usecontext)  
 [.2 Context API의 장단점](#2-context-api의-장단점)  
 [-- .2.1 장점](#21-장점)  
 [-- .2.2 단점](#22-단점)  
+[.3 Context API를 사용할 때 성능 이슈가 발생하는 경우와 해결법](#3-context-api를-사용할-때-성능-이슈가-발생하는-경우와-해결하는-방법)  
+[-- .3.1 Context API를 사용할 때 성능 이슈가 발생하는 경우](#31-context-api를-사용할-때-성능-이슈가-발생하는-경우)  
+[-- .3.2 Context API를 사용할 때 성능 이슈를 해결하는 방법](#32-context-api를-사용할-때-성능-이슈를-해결하는-방법)  
 
 # 1 Context API란?
 
@@ -97,4 +100,13 @@ export default App;
 - Provider와 Consumer를 사용하여 데이터를 전달하기 때문에, 컴포넌트 간의 관계가 복잡해질 수 있습니다.
 - `Context API` 에서 상태값을 변경하면, `provider` 로 감싼 모든 자식 컴포넌트들이 리렌더링한다. 그래서 `Context API` 를 상태관리 도구로 사용하면 각 자식 컴포넌트들이 리렌더링하지 않도록 방어할 필요가 있다
 ⇒ context api 는 상태 관리에는 어울리지 않는다  
-⇒ 정적인 값에 가까운 값을 props drilling 대신할 때 적절하다
+⇒ 정적인 값에 가까운 값을 props drilling 대신할 때 적절하다  
+
+# .3 Context API를 사용할 때 성능 이슈가 발생하는 경우와 해결하는 방법
+
+## .3.1 Context API를 사용할 때 성능 이슈가 발생하는 경우
+ Context API를 사용할 때 성능 이슈가 발생할 수 있다. Context API는 상태가 변경될 때마다 해당 컴포넌트와 그 하위 컴포넌트들이 모두 리렌더링되기 때문이다
+
+
+## .3.2 Context API를 사용할 때 성능 이슈를 해결하는 방법
+ 또한, React에서는 `React.memo`와 `useMemo` 등의 최적화 기능을 제공하고 있다. 이러한 최적화 기능을 적극적으로 활용하여 불필요한 리렌더링을 방지할 수 있다.

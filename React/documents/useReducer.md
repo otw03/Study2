@@ -1,4 +1,4 @@
-# Reducer
+# -Reducer
 
 `const [state, dispatch] = useReducer(reducer, initialArg, init);`  
 
