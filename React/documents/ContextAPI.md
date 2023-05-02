@@ -81,7 +81,7 @@ function Child() {
 export default App;
 ```
 
-`Child` ****컴포넌트에서 `MyContext.Consumer`를 사용하는 대신 `useContext` hook을 사용하여 `MyContext.Provider`에서 전달받은 값을 가져와서 사용했다. `useContext` hook은 `MyContext.Consumer`의 단축 함수로 볼 수 있다  
+`Child` 컴포넌트에서 `MyContext.Consumer`를 사용하는 대신 `useContext` hook을 사용하여 `MyContext.Provider`에서 전달받은 값을 가져와서 사용했다. `useContext` hook은 `MyContext.Consumer`의 단축 함수로 볼 수 있다  
 
 # 2 Context API의 장단점
 
