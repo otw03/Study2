@@ -63,7 +63,7 @@ npm i -D jest
 - Funcs: 함수
 - Lines: 줄 수
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a3d32a68-d799-48e7-8a30-6f6053cc2411/Untitled.png)
+![커버리지](../images/testCoverage01.png)
 
 ## 2.2 테스트 커버리지 주의점
 
