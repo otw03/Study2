@@ -7,3 +7,4 @@
 [노드 서비스 테스트](./documents/Test.md)  
 [웹 소켓](./documents/Web_Socket.md)  
 [서버리스](./documents/Serverless.md)  
+[노드 타입스크립트 기본](./documents/Node_Typescript.md)  
