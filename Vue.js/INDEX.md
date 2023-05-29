@@ -6,7 +6,7 @@
 [05-v-if, v-else, v-else-if](./documents/05-v-if%2Cv-else%2Cv-else-if.md)  
 [06-v-show](./documents/06-v-show.md)  
 [07-v-for](./documents/07-v-for.md)  
-[]()  
+[08-Vue 내부 살펴보기](./documents/08-Inside_Vue.md)  
 []()  
 []()  
 []()  
